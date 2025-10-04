@@ -62,6 +62,7 @@ export function Navbar() {
               </Link>
             ))}
             <Button size="sm" className="bg-red-500 hover:bg-red-600 text-white">
+              <Link className="absolute inset-0" href="tel:+243999981735"/>
               <Phone className="w-4 h-4 mr-2" />
               Urgence
             </Button>
