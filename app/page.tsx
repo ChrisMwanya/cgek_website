@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Stethoscope, Users, Clock, Shield, Phone, Calendar, Heart, Microscope, House } from 'lucide-react';
+import { Stethoscope, Users, Clock, Shield, Phone, Calendar, Heart, Microscope, House, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 
 const services = [
   {
