@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -17,11 +17,24 @@ const navigation = [
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="bg-white shadow-md fixed w-full z-50 top-0">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <header className={cn(
+      "bg-white fixed w-full z-50 top-0 transition-shadow duration-300",
+      isScrolled && "shadow-lg"
+    )}>
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
@@ -30,7 +43,7 @@ export function Navbar() {
             </div>
             <div className="hidden sm:block">
               <span className="text-xl font-bold text-blue-700">CGEK</span>
-              <p className="text-sm text-gray-600">Clinique Gastro-Entérologique</p>
+              <p className="text-sm text-gray-600">Clinique Gastro-Entérologique de Kinshasa</p>
             </div>
           </Link>
 
