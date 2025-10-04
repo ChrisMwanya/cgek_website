@@ -50,8 +50,8 @@ const contactInfo = [
     color: 'text-orange-600',
     details: [
       'Lundi - Vendredi : 7h00 - 18h00',
-      'Samedi : 8h00 - 14h00',
-      'Dimanche : Urgences uniquement'
+      'Samedi - Dimanche : 8h00 - 14h00',
+      
     ],
     action: null
   }
@@ -156,23 +156,58 @@ export default function ContactPage() {
                 <div className="flex items-start space-x-4">
                   <Navigation className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Coordonnées GPS</h3>
+                    <p className="text-gray-600 font-mono text-sm">
+                      Latitude: -4.3351998°<br />
+                      Longitude: 15.3262024°
+                    </p>
+                    <p className="text-gray-500 text-xs mt-1">
+                      Précision: ±5 mètres (Vérifiée Google Maps)
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <Navigation className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                  <div>
                     <h3 className="font-semibold text-gray-900 mb-2">Point de repère</h3>
                     <p className="text-gray-600">
                       Station de service Sonaydro (1ère rue)<br />
-                      En face de l'église Cité Bethel<br />
-                      Proche du marché Limete
+                      En face de l&apos;église Cité Bethel<br />
+                      Proche de Kin marché Limete
                     </p>
                   </div>
                 </div>
 
                 <div className="bg-blue-50 p-6 rounded-lg">
                   <h3 className="font-semibold text-blue-900 mb-3">
+                    Informations géospatiales
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div className="space-y-2">
+                      <p className="text-blue-800"><strong>Coordonnées WGS84:</strong></p>
+                      <p className="text-blue-700 font-mono">-4.3351998°, 15.3262024°</p>
+                      <p className="text-blue-800"><strong>Zone UTM:</strong> 33S</p>
+                      <p className="text-blue-800"><strong>Altitude:</strong> ~320m</p>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-blue-800"><strong>Commune:</strong> Limete</p>
+                      <p className="text-blue-800"><strong>Quartier:</strong> Immo-Congo</p>
+                      <p className="text-blue-800"><strong>Province:</strong> Kinshasa</p>
+                      <p className="text-blue-800"><strong>Pays:</strong> République Démocratique du Congo</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-green-50 p-6 rounded-lg">
+                  <h3 className="font-semibold text-green-900 mb-3">
                     Comment nous trouver ?
                   </h3>
-                  <ul className="text-blue-800 space-y-2 text-sm">
+                  <ul className="text-green-800 space-y-2 text-sm">
                     <li>• Depuis le centre-ville : Prendre le Boulevard Lumumba direction Limete</li>
-                    <li>• Transport en commun : Arrêt "Immo-Congo" ou "Station Sonaydro"</li>
+                    <li>• Transport en commun : Arrêt &quot;Immo-Congo&quot; ou &quot;Station Sonaydro&quot;</li>
                     <li>• En taxi/voiture : Parking disponible devant la clinique</li>
+                    <li>• GPS/Navigation : Utiliser les coordonnées -4.3351998, 15.3262024</li>
                   </ul>
                 </div>
               </div>
@@ -181,14 +216,54 @@ export default function ContactPage() {
             <div className="space-y-6">
               {/* Google Maps Embed */}
               <Card className="border-0 shadow-lg overflow-hidden">
-                <div className="aspect-video bg-gray-200 flex items-center justify-center">
-                  <div className="text-center text-gray-500">
-                    <MapPin className="w-12 h-12 mx-auto mb-4" />
-                    <p className="text-lg font-medium mb-2">Carte Google Maps</p>
-                    <p className="text-sm">
-                      Boulevard Lumumba, Limete<br />
-                      Kinshasa, RDC
-                    </p>
+                <div className="relative">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.8247832!2d15.3262024!3d-4.3351998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a6a37ced017027d:0xfc0a4a714723c130!2sClinique%20Gastro-Ent%C3%A9rologique%20de%20Kinshasa!5e0!3m2!1sfr!2scd!4v1633435200000!5m2!1sfr!2scd&z=16"
+                    width="100%"
+                    height="300"
+                    title="Localisation CGEK - Clinique Gastro-Entérologique de Kinshasa"
+                    className="w-full h-72 border-0"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                  
+                  {/* Overlay with directions button */}
+                  <div className="absolute bottom-4 right-4 bg-white rounded-lg shadow-lg p-3">
+                    <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700">
+                      <Link 
+                        href="https://www.google.com/maps/dir/?api=1&destination=-4.3351998,15.3262024&destination_place_id=0x1a6a37ced017027d:0xfc0a4a714723c130"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Navigation className="w-4 h-4 mr-2" />
+                        Itinéraire
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+                
+                {/* Map Info */}
+                <div className="p-4 bg-gray-50 border-t">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="font-semibold text-gray-900">CGEK - Centre de Santé</h4>
+                      <p className="text-sm text-gray-600">Boulevard Lumumba, N°05, Limete</p>
+                      <p className="text-xs text-gray-500 font-mono mt-1">
+                        GPS: -4.3351998°, 15.3262024°
+                      </p>
+                    </div>
+                    <div className="flex space-x-2">
+                      <Button asChild size="sm" variant="outline">
+                        <Link 
+                          href="https://www.google.com/maps/place/Clinique+Gastro-Ent%C3%A9rologique+de+Kinshasa/@-4.3351998,15.3262024,17z"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <MapPin className="w-4 h-4 mr-1" />
+                          Voir sur Maps
+                        </Link>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </Card>
@@ -203,7 +278,7 @@ export default function ContactPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-red-600 mb-4">
-                    En cas d'urgence médicale, n'hésitez pas à nous contacter 
+                    En cas d&apos;urgence médicale, n&apos;hésitez pas à nous contacter 
                     à tout moment.
                   </p>
                   <Button asChild className="bg-red-500 hover:bg-red-600 w-full">
@@ -224,7 +299,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Une question ? Besoin d'aide ?
+              Une question ? Besoin d&apos;aide ?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
               Notre équipe est là pour vous renseigner et vous accompagner 
@@ -237,7 +312,7 @@ export default function ContactPage() {
                   Prendre rendez-vous
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+              <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-600">
                 <Link href="tel:+243999981735">
                   <Phone className="w-5 h-5 mr-2" />
                   Appeler maintenant
