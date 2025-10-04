@@ -144,7 +144,7 @@ export default function AppointmentPage() {
                 Prendre un autre rendez-vous
               </Button>
               <p className="text-sm text-gray-500">
-                En cas d'urgence, appelez directement le +243 999 981 735
+                En cas d &apos;urgence, appelez directement le +243 999 981 735
               </p>
             </div>
           </div>
@@ -175,7 +175,7 @@ export default function AppointmentPage() {
               </div>
               <div className="flex items-center text-blue-700">
                 <Clock className="w-4 h-4 mr-2" />
-                <span>Lun-Ven : 7h-18h</span>
+                <span>Lun-Ven : 7h-18h</span>; <span>Sam-Dim : 8h-14h</span>
               </div>
             </div>
           </div>
@@ -192,7 +192,7 @@ export default function AppointmentPage() {
               </div>
               <CardTitle className="text-2xl">Formulaire de rendez-vous</CardTitle>
               <CardDescription>
-                Tous les champs marqués d'un * sont obligatoires
+                Tous les champs marqués d &apos;un * sont obligatoires
               </CardDescription>
             </CardHeader>
             
@@ -344,7 +344,7 @@ export default function AppointmentPage() {
 
                 <div className="text-center text-sm text-gray-500 pt-4">
                   <p>
-                    En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe 
+                    En soumettant ce formulaire, vous acceptez d &apos;être contacté par notre équipe 
                     pour confirmer votre rendez-vous.
                   </p>
                 </div>
