@@ -1,8 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Stethoscope, Users, Clock, Shield, Phone, Calendar, Heart, Microscope, Chrome as Home, Headphones } from 'lucide-react';
+import { Stethoscope, Users, Clock, Shield, Phone, Calendar, Heart, Microscope, House, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 
 const services = [
   {
@@ -32,7 +33,7 @@ const services = [
   {
     title: 'Médecine à domicile',
     description: 'Soins médicaux à domicile pour votre confort et sécurité.',
-    icon: Home,
+    icon: House,
     color: 'text-orange-600'
   },
   {
@@ -98,8 +99,8 @@ export default function HomePage() {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-6 pt-8">
                 <div className="text-center">
-                  <div className="text-2xl lg:text-3xl font-bold text-blue-600">15+</div>
-                  <div className="text-sm text-gray-600">Années d'expérience</div>
+                  <div className="text-2xl lg:text-3xl font-bold text-blue-600">5+</div>
+                  <div className="text-sm text-gray-600">Années d&apos;expérience</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl lg:text-3xl font-bold text-blue-600">1000+</div>
@@ -107,14 +108,25 @@ export default function HomePage() {
                 </div>
                 <div className="text-center">
                   <div className="text-2xl lg:text-3xl font-bold text-blue-600">24/7</div>
-                  <div className="text-sm text-gray-600">Service d'urgence</div>
+                  <div className="text-sm text-gray-600">Service d&apos;urgence</div>
                 </div>
               </div>
             </div>
 
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-8 text-white">
-                <div className="h-full flex flex-col justify-center items-center text-center space-y-6">
+              <div className="aspect-square bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-8 text-white relative overflow-hidden">
+                {/* Image d'arrière-plan sous la couleur bleue */}
+                <div className="absolute inset-0 opacity-40">
+                  <Image 
+                    src="/images/hero/background.webp"
+                    alt="Centre médical CGEK" 
+                    fill
+                    className="object-cover rounded-3xl"
+                  />
+                </div>
+                
+                {/* Contenu par-dessus l'image */}
+                <div className="relative z-10 h-full flex flex-col justify-center items-center text-center space-y-6">
                   <Stethoscope className="w-24 h-24 text-white/80" />
                   <h3 className="text-2xl font-bold">CGEK</h3>
                   <p className="text-blue-100">
@@ -145,8 +157,8 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
+            {features.map((feature) => (
+              <Card key={feature.title} className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <feature.icon className="w-8 h-8 text-blue-600" />
@@ -176,8 +188,8 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
+            {services.map((service) => (
+              <Card key={service.title} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
                 <CardHeader>
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-blue-50 transition-colors">
@@ -213,7 +225,7 @@ export default function HomePage() {
               Prêt à prendre soin de votre santé ?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Contactez-nous dès aujourd'hui pour planifier votre consultation 
+              Contactez-nous dès aujourd&apos;hui pour planifier votre consultation 
               avec nos spécialistes expérimentés.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -223,7 +235,7 @@ export default function HomePage() {
                   Prendre rendez-vous
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+              <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-600">
                 <Link href="/contact">
                   Nous contacter
                 </Link>

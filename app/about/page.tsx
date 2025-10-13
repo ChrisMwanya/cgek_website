@@ -2,15 +2,17 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
-  Users, 
   Award, 
   Heart, 
   Shield, 
   Target, 
   Calendar,
   Stethoscope,
-  Building
+  Building,
+  Linkedin,
+  X
 } from 'lucide-react';
 
 const values = [
@@ -45,19 +47,31 @@ const team = [
     name: 'Dr. Marie Kabila',
     role: 'Gastro-entérologue senior',
     experience: '15 ans d\'expérience',
-    speciality: 'Endoscopie digestive'
+    speciality: 'Endoscopie digestive',
+    social: {
+      linkedin: 'https://linkedin.com/in/marie-kabila',
+      x: 'https://x.com/drmarie_kabila'
+    }
   },
   {
-    name: 'Dr. Jean Mukendi',
+    name: 'Dr. Aaron',
     role: 'Médecin généraliste',
-    experience: '12 ans d\'expérience',
-    speciality: 'Soins palliatifs'
+    experience: '5 ans d\'expérience',
+    speciality: 'Soins palliatifs',
+    social: {
+      linkedin: 'https://linkedin.com/in/dr-aaron',
+      x: 'https://x.com/dr_aaron_cgek'
+    }
   },
   {
     name: 'Dr. Sarah Lomami',
     role: 'Biologiste médical',
     experience: '10 ans d\'expérience',
-    speciality: 'Analyses de laboratoire'
+    speciality: 'Analyses de laboratoire',
+    social: {
+      linkedin: 'https://linkedin.com/in/sarah-lomami',
+      x: 'https://x.com/dr_sarah_lomami'
+    }
   }
 ];
 
@@ -75,32 +89,43 @@ export default function AboutPage() {
                   <span className="text-blue-600"> CGEK</span>
                 </h1>
                 <p className="text-xl text-gray-600">
-                  Depuis plus de 15 ans, la Clinique Gastro-Entérologique de Kinshasa 
-                  s'engage à fournir des soins médicaux de qualité supérieure à la 
+                  Depuis plus de 5 ans, la Clinique Gastro-Entérologique de Kinshasa 
+                  s&apos;engage à fournir des soins médicaux de qualité supérieure à la 
                   population kinoise et de la RDC.
                 </p>
               </div>
               
               <div className="grid grid-cols-2 gap-6">
                 <div className="bg-white p-6 rounded-lg shadow-lg">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">15+</div>
-                  <div className="text-gray-600">Années d'expérience</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-2">5+</div>
+                  <div className="text-gray-600">Années d&apos;expérience</div>
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-lg">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">5000+</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-2">1 000+</div>
                   <div className="text-gray-600">Patients soignés</div>
                 </div>
               </div>
             </div>
 
             <div className="relative">
-              <div className="aspect-[4/3] bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 text-white">
-                <div className="h-full flex flex-col justify-center items-center text-center space-y-6">
+              <div className="aspect-[4/3] bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 text-white relative overflow-hidden">
+                {/* Image d'arrière-plan sous la couleur bleue */}
+                <div className="absolute inset-0 opacity-20">
+                  <Image 
+                    src="/images/team/teams.jpg" 
+                    alt="Équipe médicale CGEK" 
+                    fill
+                    className="object-cover rounded-2xl"
+                  />
+                </div>
+                
+                {/* Contenu par-dessus l'image */}
+                <div className="relative z-10 h-full flex flex-col justify-center items-center text-center space-y-6">
                   <Building className="w-20 h-20 text-white/80" />
                   <div className="space-y-2">
                     <h3 className="text-2xl font-bold">Notre Mission</h3>
                     <p className="text-blue-100 text-lg">
-                      Fournir des soins gastro-entérologiques d'excellence 
+                      Fournir des soins gastro-entérologiques d&apos;excellence
                       accessible à tous dans un environnement sécurisé et bienveillant.
                     </p>
                   </div>
@@ -122,22 +147,22 @@ export default function AboutPage() {
             <div className="prose max-w-none">
               <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
                 <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  Fondée en 2009, la <strong>Clinique Gastro-Entérologique de Kinshasa (CGEK)</strong> 
+                  Fondée en 2021, la <strong>Clinique Gastro-Entérologique de Kinshasa (CGEK)</strong> 
                   est née de la vision de médecins spécialisés soucieux de combler le manque de 
                   services gastro-entérologiques de qualité en République Démocratique du Congo.
                 </p>
                 
                 <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  Située au Boulevard Lumumba dans la commune de Limete, notre clinique s'est 
+                  Située au Boulevard Lumumba dans la commune de Limete, notre clinique s&apos;est 
                   rapidement imposée comme une référence en matière de soins digestifs, grâce à 
                   son équipe médicale expérimentée et ses équipements de pointe.
                 </p>
                 
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Aujourd'hui, la CGEK continue d'évoluer pour répondre aux besoins croissants 
+                  Aujourd&apos;hui, la CGEK continue d&apos;évoluer pour répondre aux besoins croissants 
                   de la population, en proposant une gamme élargie de services incluant les 
                   consultations spécialisées, les examens endoscopiques, les soins à domicile 
-                  et l'accompagnement palliatif.
+                  et l&apos;accompagnement palliatif.
                 </p>
               </div>
             </div>
@@ -158,7 +183,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((value, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <Card key={index+1} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -190,7 +215,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member, index) => (
-              <Card key={index} className="text-center border-0 shadow-lg">
+              <Card key={index+2} className="text-center border-0 shadow-lg">
                 <CardHeader>
                   <div className="w-24 h-24 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Stethoscope className="w-12 h-12 text-white" />
@@ -201,9 +226,29 @@ export default function AboutPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2 text-gray-600">
+                  <div className="space-y-3 text-gray-600">
                     <p>{member.experience}</p>
                     <p className="text-sm"><strong>Spécialité:</strong> {member.speciality}</p>
+                    
+                    {/* Liens sociaux */}
+                    <div className="flex justify-center space-x-3 pt-3">
+                      <Link
+                        href={member.social.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors"
+                      >
+                        <Linkedin className="w-4 h-4 text-blue-600" />
+                      </Link>
+                      <Link
+                        href={member.social.x}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors"
+                      >
+                        <X className="w-4 h-4 text-blue-600" />
+                      </Link>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -221,7 +266,7 @@ export default function AboutPage() {
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
               Faites confiance à notre expertise pour prendre soin de votre santé digestive 
-              avec l'attention que vous méritez.
+              avec l&apos;attention que vous méritez.
             </p>
             <Button asChild size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-100">
               <Link href="/appointment">

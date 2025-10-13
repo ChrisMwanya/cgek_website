@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Stethoscope, Microscope, Users, Shield, Chrome as Home, Heart, Headphones, Calendar, Clock, Phone } from 'lucide-react';
+import { Stethoscope, Microscope, Users, Shield, House, Heart, Headphones, Calendar, Clock, Phone, Video } from 'lucide-react';
 
 const services = [
   {
@@ -30,7 +30,7 @@ const services = [
       'Rectoscopie',
       'Biopsies si nécessaires'
     ],
-    price: 'À partir de 150$',
+    price: 'À partir de 100$',
     duration: '20-40 minutes'
   },
   {
@@ -44,7 +44,7 @@ const services = [
       'Orientation spécialisée',
       'Suivi médical régulier'
     ],
-    price: 'À partir de 30$',
+    price: 'À partir de 25$',
     duration: '20-30 minutes'
   },
   {
@@ -64,7 +64,7 @@ const services = [
   {
     title: 'Médecine à domicile',
     description: 'Soins médicaux à domicile pour votre confort et sécurité, particulièrement adaptés aux patients à mobilité réduite.',
-    icon: Home,
+    icon: House,
     color: 'text-orange-600',
     features: [
       'Consultations à domicile',
@@ -101,6 +101,19 @@ const services = [
       'Orientation spécialisée'
     ],
     price: 'Service gratuit',
+    duration: 'Selon besoin'
+  },
+  {
+    title: 'Télémédecine',
+    description: 'Consultations médicales à distance via vidéoconférence sécurisée pour un accès facile aux soins depuis votre domicile.',
+    icon: Video,
+    color: 'text-indigo-600',
+    features: [
+      'Consultation en ligne sécurisée',
+      'Suivi médical à distance',      
+      'Accès aux dossiers médicaux'
+    ],
+    price: 'À partir de 30$',
     duration: 'Selon besoin'
   }
 ];
@@ -142,7 +155,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
+              <Card key={index + 1} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
                 <CardHeader>
                   <div className="flex items-start space-x-4">
                     <div className="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center group-hover:bg-blue-50 transition-colors flex-shrink-0">
@@ -163,7 +176,7 @@ export default function ServicesPage() {
                     <h4 className="font-semibold text-gray-900 mb-3">Services inclus :</h4>
                     <ul className="space-y-2">
                       {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-gray-600">
+                        <li key={idx + 1} className="flex items-center text-gray-600">
                           <div className="w-2 h-2 bg-blue-500 rounded-full mr-3 flex-shrink-0"></div>
                           {feature}
                         </li>
@@ -201,9 +214,9 @@ export default function ServicesPage() {
             <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <Phone className="w-8 h-8 text-white" />
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Service d'Urgence 24/7</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Service d&apos;Urgence 24/7</h2>
             <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
-              En cas d'urgence médicale, notre équipe est disponible 24 heures sur 24, 
+              En cas d&apos;urgence médicale, notre équipe est disponible 24 heures sur 24, 
               7 jours sur 7 pour vous fournir les soins nécessaires.
             </p>
             <Button asChild size="lg" className="bg-red-500 hover:bg-red-600">
@@ -221,11 +234,11 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Besoin d'une consultation ?
+              Besoin d &apos;une consultation ?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
               Nos spécialistes sont là pour vous accompagner. Prenez rendez-vous 
-              dès aujourd'hui pour bénéficier de nos services de qualité.
+              dès aujourd&apos;hui pour bénéficier de nos services de qualité.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-100">
@@ -234,7 +247,7 @@ export default function ServicesPage() {
                   Prendre rendez-vous
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+              <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-600">
                 <Link href="/contact">
                   Nous contacter
                 </Link>
